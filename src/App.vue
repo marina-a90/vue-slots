@@ -26,7 +26,7 @@
 
         <ToDoList :todos="todos">
           <div slot-scope="todoProps">
-            <h3>{{ todoProps.todo.text | capitalize }}</h3>
+            <h3>{{ todoProps.todo.text | upperCase | uncapitalize }}</h3>
             <h4>{{ todoProps.todo.isCompleted | emoji }}</h4>
           </div>
         </ToDoList>
