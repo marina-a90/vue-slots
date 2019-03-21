@@ -61,22 +61,6 @@ export default {
         { id: 3, text: "treci todo", isCompleted: true }
       ]
     };
-  },
-
-  filters: {
-    capitalize(value) {
-      if (!value) {
-        return "";
-      }
-
-      value = value.toString();
-
-      return value.charAt(0).toUpperCase() + value.slice(1);
-    },
-
-    emoji(value) {
-      return value ? "👍" : "👎";
-    }
   }
 };
 </script>
