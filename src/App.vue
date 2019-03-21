@@ -21,10 +21,13 @@
 
       <template>
         <h3>default</h3>
+
+        <!-- <ToDoList :todos="todos"/> -->
+
         <ToDoList :todos="todos">
           <div slot-scope="todoProps">
-            <h3>{{ todoProps.todo.text }}</h3>
-            <h4>{{ todoProps.todo.isCompleted ? "👍" : "👎" }}</h4>
+            <h3>{{ todoProps.todo.text | capitalize }}</h3>
+            <h4>{{ todoProps.todo.isCompleted | emoji }}</h4>
           </div>
         </ToDoList>
       </template>
@@ -53,11 +56,27 @@ export default {
   data() {
     return {
       todos: [
-        { id: 1, text: "1. todo", isCompleted: false },
-        { id: 2, text: "2. todo", isCompleted: false },
-        { id: 3, text: "3. todo", isCompleted: true }
+        { id: 1, text: "prvi todo", isCompleted: false },
+        { id: 2, text: "drugi todo", isCompleted: false },
+        { id: 3, text: "treci todo", isCompleted: true }
       ]
     };
+  },
+
+  filters: {
+    capitalize(value) {
+      if (!value) {
+        return "";
+      }
+
+      value = value.toString();
+
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    },
+
+    emoji(value) {
+      return value ? "👍" : "👎";
+    }
   }
 };
 </script>
