@@ -21,6 +21,12 @@
 
       <template>
         <h3>default</h3>
+        <ToDoList :todos="todos">
+          <div slot-scope="todoProps">
+            <h3>{{ todoProps.todo.text }}</h3>
+            <h4>{{ todoProps.todo.isCompleted ? "👍" : "👎" }}</h4>
+          </div>
+        </ToDoList>
       </template>
 
       <template slot="footer">
@@ -35,12 +41,23 @@
 <script>
 import Car from "./components/Car";
 import BaseLayout from "./components/BaseLayout";
+import ToDoList from "./components/ToDoList";
 
 export default {
   name: "app",
   components: {
     Car,
-    BaseLayout
+    BaseLayout,
+    ToDoList
+  },
+  data() {
+    return {
+      todos: [
+        { id: 1, text: "1. todo", isCompleted: false },
+        { id: 2, text: "2. todo", isCompleted: false },
+        { id: 3, text: "3. todo", isCompleted: true }
+      ]
+    };
   }
 };
 </script>
